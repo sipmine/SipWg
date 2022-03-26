@@ -1,5 +1,5 @@
-create table User(
+CREATE TABLE IF NOT EXISTS User (
   id integer primary key,
-  user_id integer primary key,
-  name varchar(255)
+  user_id integer,
+  name TEXT
 )
