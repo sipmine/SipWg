@@ -7,6 +7,8 @@ def initbd():
     
     try:
         conn = sqlite3.connect("file")
+        cur = conn.cursor()
+        
         print(sqlite3.version)
     except Error as e:
         print(e)
@@ -14,4 +16,10 @@ def initbd():
         if conn:
             conn.close()
 
-    
+
+
+
+
+
+
+
