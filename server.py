@@ -1,5 +1,6 @@
-from db import create
-
+from db import create, find_by_id
+from newclient import configFile
+from userconf import createFile 
 
 import logging
 from aiogram import Bot, Dispatcher, executor, types
@@ -17,8 +18,8 @@ print("all commands bot:\n start \n help \n testreg \n")
 # start message 
 @dp.message_handler(commands="start")
 async def cheack_commands(msg: types.message):
-    user_id = msg.from_user.id
-    user_name = str(msg.from_user.first_name)
+    user_id = msg.from_user.id 
+    user_name = str(msg.from_user.username)
     create(user_id, user_name)
     await msg.answer("Привет! \n список мойх функций /help ")
 
@@ -27,10 +28,22 @@ async def cheack_commands(msg: types.message):
 async def help_commands(msg: types.message):
     await msg.answer("Получить доступ к vpn /getvpn")
 
-    
+
+# get vpn
 @dp.message_handler(commands="getvpn")
 async def getvpn(msg: types.message):
-    pass
+    # init  var
+    user_id = msg.from_user.id
+    username = msg.from_user.username
+    id_on_db = find_by_id(user_id)
 
+    # media 
+    media = types.MediaGroup()
+    # create config file
+    configFile(username, id_on_db)
+    createFile(username, id_on_db)
+    media.attach_document(types.InputFile(f'{username}_wg.conf'), "vpn file")
+    await msg.answer("Вот твой файл конфигурации ->")
+    await msg.answer_media_group(media=media)
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)

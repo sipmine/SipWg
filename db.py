@@ -21,8 +21,10 @@ def create(user_id: int, name):
         print("this entry already exist")
 
 def find_by_id(entry_id: int):
-    cursor.execute("SELECT user_id FROM User")
-    cursor.execute("WHERE user_id = (?)", (entry_id))
+    cursor.execute(f'SELECT * FROM User WHERE user_id = "{entry_id}"')
+    out = cursor.fetchall()[0][0]
+    
     conn.commit()
+    return out
 
 
