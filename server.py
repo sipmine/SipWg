@@ -7,16 +7,6 @@ from safe import BOT_TOKEN
 import logging
 from aiogram import Bot, Dispatcher, executor, types
 
-# Const
-# API_TOKEN = "5159971668:AAHopjga0bOGUNp3m8eZRZ5eNsvE4hfzHEw"
-
- 
-
-
-
-
-
-
 
 # configure config
 logging.basicConfig(level=logging.INFO)
