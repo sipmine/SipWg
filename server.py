@@ -2,17 +2,27 @@ from db import create, find_by_id
 from newclient import configFile
 from userconf import createFile 
 
+from safe import BOT_TOKEN
+
 import logging
 from aiogram import Bot, Dispatcher, executor, types
 
+# Const
+# API_TOKEN = "5159971668:AAHopjga0bOGUNp3m8eZRZ5eNsvE4hfzHEw"
 
-API_TOKEN = "5159971668:AAHopjga0bOGUNp3m8eZRZ5eNsvE4hfzHEw"
+ 
+
+
+
+
+
+
 
 # configure config
 logging.basicConfig(level=logging.INFO)
-
+print(BOT_TOKEN)
 # init bot
-bot = Bot(token=API_TOKEN)
+bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher(bot)
 print("all commands bot:\n start \n help \n testreg \n")
 # start message 
@@ -43,7 +53,7 @@ async def getvpn(msg: types.message):
     configFile(username, id_on_db)
     createFile(username, id_on_db)
     media.attach_document(types.InputFile(f'{username}_wg.conf'), "vpn file")
-    await msg.answer("Вот твой файл конфигурации ->")
+    await msg.answer("Ваш файл")
     await msg.answer_media_group(media=media)
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
