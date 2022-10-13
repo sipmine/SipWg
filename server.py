@@ -19,7 +19,7 @@ from aiogram import Bot, Dispatcher, executor, types
 logging.basicConfig(level=logging.INFO)
 
 # init bot
-BOT_TOKEN = "5159971668:AAHopjga0bOGUNp3m8eZRZ5eNsvE4hfzHEw"
+BOT_TOKEN = "token"
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher(bot)
 
@@ -43,10 +43,7 @@ async def cheack_commands(msg: types.message):
 
 @dp.message_handler(commands="guide")
 async def guide_commands(msg: types.message):
-    await msg.answer('''И так чтобы пользоваться впн на мобильном устройстве зайди в (AppStore / Google Play) найди там приложение WireGuard. 
-Теперь жмёшь плюсик и нажимаешь импорт из файла (скачай файл, который дал бот). ОБЯЗАТЕЛЬНО СКАЧЕННЫЙ ФАЙЛ ПРЕМЕНУЙТЕ У СЕБЯ НА ТЕЛЕФОНЕ.
-Вот и всё нажимай включить и радуйся :).
-На пк всё просто переходим на этот сайт и устанавливай https://www.wireguard.com/install/ дальше загружаем свой конфиг файл и радуемся''')
+    await msg.answer("Ваш текст команды")
 
 
 
